@@ -59,41 +59,85 @@ public class RadioTest {
 
 
 
+
+
     @Test
-    public void shouldSetNextChanel() {
-        ru.netology.radio.Radio radio = new ru.netology.radio.Radio();
-        radio.setCurrentChanel(4);
+    public void ChanelPlusOne() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio(11);
+        radio.setCurrentChanel(3);
 
         radio.next();
 
+        int expected = 4;
         int actual = radio.getCurrentChanel();
-        int expected = 5;
 
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void shouldSetPrevChanel() {
-        ru.netology.radio.Radio radio = new ru.netology.radio.Radio();
-        radio.setCurrentChanel(4);
+    public void ChanelMinusOne() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio(11);
+        radio.setCurrentChanel(3);
 
         radio.prev();
 
+        int expected = 2;
         int actual = radio.getCurrentChanel();
-        int expected = 3;
 
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void shouldSetCurrentChanel() {
-        ru.netology.radio.Radio radio = new ru.netology.radio.Radio();
-        radio.setCurrentChanel(7);
+    public void ChanelOverMax() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio(11);
+        radio.setCurrentChanel(10);
 
-        radio.getCurrentChanel();
+        radio.next();
 
+        int expected = 0;
         int actual = radio.getCurrentChanel();
-        int expected = 7;
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void ChanelOverMin() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio(11);
+        radio.setCurrentChanel(0);
 
+        radio.prev();
+
+        int expected = 10;
+        int actual = radio.getCurrentChanel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void ChanelOverRangeMax() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio(11);
+        radio.setCurrentChanel(12);
+
+        int expected = 0;
+        int actual = radio.getCurrentChanel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void ChanelOverRangeMin() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio(11);
+        radio.setCurrentChanel(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentChanel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void DefaultChanelStation() {
+        ru.netology.radio.Radio radio = new ru.netology.radio.Radio();
+        radio.setCurrentChanel(7);
+
+        int expected = 7;
+        int actual = radio.getCurrentChanel();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
+
