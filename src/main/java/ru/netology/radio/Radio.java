@@ -49,20 +49,6 @@ public class Radio {
             currentVolume = 0;
         }
     }
-    public void maxVolume() {
-        if (currentVolume > 10) {
-            currentVolume++;
-        } else {
-            currentVolume = 10;
-        }
-    }
-    public void minVolume() {
-        if (currentVolume < 0) {
-            currentVolume--;
-        } else {
-            currentVolume = 0;
-        }
-    }
 
 
     public void next() {
